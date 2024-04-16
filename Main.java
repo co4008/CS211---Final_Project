@@ -59,7 +59,7 @@ public class Main extends Application {
 		@Override
 		public void handle(ActionEvent event)
 		{
-			myLabel.setText("Thanks for clicking the button!");
+			myLabel.setText("Thanks for clicking the button!!");
 		}
 	}
 	
