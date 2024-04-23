@@ -7,6 +7,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import java.util.ArrayList;
 import javafx.scene.text.*;
-
 
 public class Main extends Application {
 	
@@ -38,7 +39,7 @@ public class Main extends Application {
 
 			ArrayList<VBox> vboxList = new ArrayList<VBox>();
 			
-			for(int i = 0; i < 30; i++)
+			for(int i = 0; i < 40; i++)
 			{
 				String num;
 				num = Integer.toString(i+1);
@@ -50,48 +51,89 @@ public class Main extends Application {
 			}
 			
 			
-			for(int i = 0; i < 30; i++)
+			for(int i = 0; i < 40; i++)
 			{
 				VBox vbox = new VBox(buttonList.get(i));
 				vboxList.add(vbox);
 			}
 			
 			GridPane gridpane = new GridPane();
-			gridpane.add(vboxList.get(0), 1, 0);
-			gridpane.add(vboxList.get(1), 2, 0);
-			gridpane.add(vboxList.get(2), 3, 0);
-			gridpane.add(vboxList.get(3), 4, 0);
-			gridpane.add(vboxList.get(4), 5, 0);
-			gridpane.add(vboxList.get(5), 6, 0);
-			gridpane.add(vboxList.get(6), 7, 0);
+			
+			int count = 0;
+			
+			for(int i = 0; i < 5; i++)
+			{
+				
+				for(int j = 0; j < 7; j++)
+				{
+					if(count == 0)
+					{
+						j = 1;
+					}
+					
+					gridpane.add(vboxList.get(count), j, i);
+					count++;
+					
+					if (count == 31)
+					{
+						break;
+					}
+				}
+			}
 			
 			
-			
-			
-			
-			VBox vbox = new VBox(buttonList.get(0));
-			
-			Text title = new Text("April");
-			
-			title.setTextAlignment(TextAlignment.JUSTIFY);
-			
-			//gridpane.add(title, 3, 0);
+			gridpane.setAlignment(Pos.BOTTOM_CENTER);
 			
 		
 			
-			vbox.setAlignment(Pos.CENTER);
+			Text title = new Text("April");
+			HBox hboxTitle = new HBox(title);
+			
+			title.setFont(Font.font(32));
+			
+			hboxTitle.setAlignment(Pos.TOP_CENTER);
+			
+			title.setTextAlignment(TextAlignment.JUSTIFY);
 			
 			
+			//Days of the Week Text
+			Text sunday = new Text("Sun");
+			Text monday = new Text("Mon");
+			Text tuesday = new Text("Tues");
+			Text wednesday = new Text("Wed");
+			Text thursday = new Text("Thurs");
+			Text friday = new Text("Fri");
+			Text saturday = new Text("Sat");
 			
-			//Image image = new Image("file:dsue.png ");
-			//ImageView imageView = new ImageView(image);
-			//VBox vbox = new VBox();
+			GridPane gridpaneDays = new GridPane();
+			
+			gridpaneDays.add(hboxTitle, 3, 0);
+			gridpaneDays.add(sunday, 0, 1);
+			gridpaneDays.add(monday, 1, 1);
+			gridpaneDays.add(tuesday, 2, 1);
+			gridpaneDays.add(wednesday, 3, 1);
+			gridpaneDays.add(thursday, 4, 1);
+			gridpaneDays.add(friday, 5, 1);
+			gridpaneDays.add(saturday, 6, 1);
+			
+			gridpaneDays.setHgap(100);
+			gridpaneDays.setVgap(60);
+			gridpaneDays.setAlignment(Pos.CENTER);
+			
+			
 			
 			GridPane gridpane2 = new GridPane();
+		
+			
+			BorderPane attempt = new BorderPane();
+			
+			attempt.setCenter(gridpane);
+			attempt.setTop(gridpaneDays);
 			
 			
-					
-			Scene scene2 = new Scene(gridpane, 960, 580);
+			Scene scene2 = new Scene(attempt, 960, 580);
+			
+			
 			primaryStage.setScene(scene2);
 			primaryStage.show();
 			System.out.println(vboxList.get(0));
