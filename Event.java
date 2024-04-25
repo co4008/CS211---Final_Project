@@ -1,14 +1,27 @@
+/************************************************************/
+/* Author: Chris O'Brien, Eric Chen, Aidan Donohoe */
+/* Major: Computer Science */
+/* Creation Date: 4/19/2024 */
+/* Due Date: 4/29/2024 */
+/* Course: CS211-02 */
+/* Professor Name: Prof. Shimkanon */
+/* Assignment: Final Project */
+/* Filename: Event.java */
+/* Purpose: This program contains the variables for */
+/* any type of general meeting or event that would be held.  */
+/************************************************************/
+
 package application;
 
 import java.util.Date;
 public class Event 
 {
-	public Date startTime;
-	public Date endTime;
-	public String group;
-	public String eventName;
-	public String description;
-	public int repeatAmount;
+	public Date startTime; //the time the event is going to start
+	public Date endTime; //the time the event is going to end
+	public String group; //Who should be notified about this event
+	public String eventName; //What the name of the event is
+	public String description; //A description about what will be at the event
+	public int repeatAmount; //The amount of times this will repeat weekly. 0 = no repeat
 	
 	
 	
