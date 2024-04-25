@@ -1,5 +1,19 @@
+/************************************************************/
+/* Author: Chris O'Brien, Eric Chen, Aidan Donohoe 	    */
+/* Major: Computer Science 				    */
+/* Creation Date: 4/19/2024 				    */
+/* Due Date: 4/29/2024					    */
+/* Course: CS211-02				  	    */
+/* Professor Name: Prof. Shimkanon			    */
+/* Assignment: Final Project 				    */
+/* Filename: Main.java 					    */
+/* Purpose: This program is for the creation of a calander  */
+/* to be used for schelduling various events for the        */
+/* DeSales esports club                                     */  
+/************************************************************/
+
 package application;
-	
+//importing everything to be used
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -38,7 +52,10 @@ public class Main extends Application {
 			ArrayList<Button> buttonList = new ArrayList<Button>();
 
 			ArrayList<VBox> vboxList = new ArrayList<VBox>();
+
 			
+			//creating the buttons that will act as the days of the month, 
+			// and a way to click on them to indicate that you want to add an event to that day
 			for(int i = 0; i < 40; i++)
 			{
 				String num;
@@ -60,7 +77,8 @@ public class Main extends Application {
 			GridPane gridpane = new GridPane();
 			
 			int count = 0;
-			
+
+			//using for loops to create the gridpanes for the days of the month
 			for(int i = 0; i < 5; i++)
 			{
 				
@@ -74,7 +92,7 @@ public class Main extends Application {
 					gridpane.add(vboxList.get(count), j, i);
 					count++;
 					
-					if (count == 31)
+					if (count == 31) //breaks after 30 becuase April has 30 days, in the future could expand functionality depending on month
 					{
 						break;
 					}
@@ -85,7 +103,7 @@ public class Main extends Application {
 			gridpane.setAlignment(Pos.BOTTOM_CENTER);
 			
 		
-			
+			//setting the name of the month as the title, and then centering and aligning it
 			Text title = new Text("April");
 			HBox hboxTitle = new HBox(title);
 			
@@ -106,6 +124,7 @@ public class Main extends Application {
 			Text saturday = new Text("Sat");
 			
 			GridPane gridpaneDays = new GridPane();
+			//establishing the spacing for the days of the week boxes
 			
 			gridpaneDays.add(hboxTitle, 3, 0);
 			gridpaneDays.add(sunday, 0, 1);
