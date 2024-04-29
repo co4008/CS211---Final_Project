@@ -17,7 +17,7 @@ public class Scrimmage extends Event
 {
 	public String opponentName; //the name of the school, club, or group the team will be scrimmming against 
 	
-	public Scrimmage(Date s, Date e, String g, String n, String d, int r, String o)
+	public Scrimmage(String s, String e, String g, String n, String d, int r, String o)
 	{
 		super(s,e,g,n,d,r);
 		opponentName = o;
