@@ -11,7 +11,6 @@
 /************************************************************/
 package application;
 
-import java.util.Date;
 //similar to the standard event class, but with the addition of the opponentName variable
 public class Scrimmage extends Event
 {
