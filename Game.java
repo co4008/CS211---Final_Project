@@ -11,13 +11,12 @@
 /************************************************************/
 package application;
 
-import java.util.Date;
-//Game is similar to event, with the addiotion of schoolName
+//Game is similar to event, with the addition of schoolName
 public class Game extends Event
 {
 	public String schoolName; //the name of the school the esports team is playing against
 	
-	public Game(Date s, Date e, String g, String n, String d, int r, String sn)
+	public Game(String s, String e, String g, String n, String d, int r, String sn)
 	{
 		super(s,e,g,n,d,r);
 		schoolName = sn;
