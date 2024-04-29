@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -64,6 +65,7 @@ public class Main extends Application {
 			
 			
 			
+			
 			for(int i = 0; i < 40; i++)
 			{
 				int stringNum = i;
@@ -110,11 +112,41 @@ public class Main extends Application {
 												stitle.setFont(Font.font(15));
 												eventTypes.add(stitle, 3, 0);
 											}
-											if (myButton.getStyle().equals("-fx-background-color: gainsboro;"))
+											if (myButton.getStyle().equals("-fx-background-color: green;"))
 											{
-												System.out.println(eventList.get());
+												
+												Button backButton = new Button("Go Back?");
+												backButton.setPrefWidth(100);
+												backButton.setPrefHeight(50);
+												BorderPane showPane = new BorderPane();
+												Scene scene4 = new Scene(showPane, 1000, 700);
+												Text showText = new Text("You already have an event planned on this date");
+												showPane.setCenter(showText);
+												showPane.setBottom(backButton);
+												showPane.setStyle("-fx-padding: 20");
+												backButton.setOnAction(a -> 
+												
+												{
+												
+												Rectangle rectangle = new Rectangle();
+												rectangle.setX(150.0f); 
+											    rectangle.setY(75.0f); 
+											    rectangle.setWidth(300.0f); 
+											    rectangle.setHeight(150.0f);  
+											    rectangle.setFill(Color.GAINSBORO);
+												eventTypes.add(rectangle, 3, 0);
+												
+												
+												primaryStage.setScene(scene1);}
+												
+														);
+												
+												showText.setFont(Font.font(32));
+												
+												backButton.setAlignment(Pos.CENTER);
+												primaryStage.setScene(scene4);
 											}
-											myButton.setStyle("-fx-background-color: gainsboro;");
+											myButton.setStyle("-fx-background-color: green;");
 											});
 											
 											
@@ -191,6 +223,8 @@ public class Main extends Application {
 			root.setCenter(gridpaneDays);
 			root.setBottom(calendar);
 			
+			root.setStyle("-fx-background-color: gainsboro;");
+			
 			
 			primaryStage.setScene(scene1);
 			primaryStage.show();
@@ -198,6 +232,7 @@ public class Main extends Application {
 			//SCENE 3: Text Fields Needed
 			GridPane eventInfo = new GridPane();
 			Scene dayScene = new Scene (eventInfo, 1000, 700);
+			eventInfo.setStyle("-fx-background-color: gainsboro;");
 			eventInfo.setVgap(10);
 			
 			
