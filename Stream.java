@@ -1,14 +1,12 @@
 package application;
 
-import java.util.Date;
-
 public class Stream extends Event
 {
-	public boolean casterConfirm;
+	public String streamLink;
 	
-	public Stream(Date s, Date e, String g, String n, String d, int r, boolean c)
+	public Stream(String s, String e, String g, String n, String d, String r, String l)
 	{
 		super(s,e,g,n,d,r);
-		c = casterConfirm;
+		l = streamLink;
 	}
 }
