@@ -34,8 +34,8 @@ public class Event
 	
 	public Event()
 	{
-		startTime = null;
-		endTime = null;
+		startTime = "";
+		endTime = "";
 		group = "";
 		eventName = "";
 		description = "";
