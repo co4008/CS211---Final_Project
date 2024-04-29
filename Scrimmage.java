@@ -7,7 +7,7 @@
 /* Professor Name: Prof. Shimkanon */
 /* Assignment: Final Project */
 /* Filename: Scrimmage.java */
-/* Purpose: This program will create the event class */
+/* Purpose: This program will create the scrimmage class */
 /************************************************************/
 package application;
 
