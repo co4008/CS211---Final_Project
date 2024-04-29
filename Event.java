@@ -81,4 +81,8 @@ public class Event
 		repeatAmount = r;
 	}
 	
+	public String toString()
+	{
+		return eventName;
+	}
 }
