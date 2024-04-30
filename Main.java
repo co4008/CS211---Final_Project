@@ -1,6 +1,17 @@
-
+/************************************************************/
+/* Author: Aidan Donohoe, Eric Chen, Chris O'Brien */
+/* Major: Computer Science */
+/* Creation Date: 4/24/2024 */
+/* Due Date: 4/29/2024 */
+/* Course: CS211-02 */
+/* Professor Name: Prof. Shimkanon */
+/* Assignment: Final Project */
+/* Filename: main.java */
+/* Purpose: This program will allow users to create a calendar */
+/* that can be used to schedule various events for the use of esports */
+/************************************************************/
 package application;
-	
+	//importing everything
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -28,21 +39,22 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try 
 		{
-			// root scene
+			//creating the root scene, the calendar and title of the program
 			primaryStage.setTitle("Esports Scheduling Program");
 			BorderPane root = new BorderPane();
 			Scene calendarScene = new Scene(root);
 			calendarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());	
 			Label directions = new Label("Click the date to schedule an event!");
 			
+			//arraylists for the numerous buttons and vboxes needed, as there is one per day of the month
 			ArrayList<Button> buttonList = new ArrayList<Button>();
 			ArrayList<VBox> vboxList = new ArrayList<VBox>();
 			
-			
+			// creating the grid pane to show the different types of events the user can select
 			GridPane eventTypes = new GridPane();
 			Text eventTitle = new Text("Select your event!");
 			
-			
+			// formatting front end for the text alignment, size, and spacing of the title 
 			eventTypes.setVgap(30);
 			eventTypes.setHgap(15);
 			eventTypes.setStyle("-fx-padding: 15");
@@ -57,7 +69,7 @@ public class Main extends Application {
 			
 			
 			
-			
+			//creating all of the buttons that will serve as the days of the calendar, limited to this april 2024 due to project scope. if revisited, need to adjust for more days with different positions 
 			for(int i = 0; i < 40; i++)
 			{
 				String num;
@@ -67,7 +79,7 @@ public class Main extends Application {
 				dateButton.setPrefHeight(100);
 				dateButton.setOnAction(e -> {primaryStage.setScene(eventTypeScene);
 							     int intnum = Integer.parseInt(num);
-							     if ( intnum >= 4 && intnum <= 20 || intnum >= 24)
+							     if ( intnum >= 4 && intnum <= 20 || intnum >= 24) //for selecting days that end with numbers that use "th", so most of the days in the month
 							     {
 								     String date = num;
 								     date = "You chose April " + num + "th!";
@@ -75,8 +87,9 @@ public class Main extends Application {
 								     stitle.setFont(Font.font(15));
 								     eventTypes.add(stitle, 3, 0);
 							     }
-											
-							     else if( intnum == 1 || intnum == 21)
+											// below are the special day selections where it uses a different ending, 1 2 and 3 all use their own ending so they must have 
+											//a unique selection
+							     else if( intnum == 1 || intnum == 21)//for choosing days that end with "st", would need to have the 31st added if we expanded the months
 							     {
 								     String date = num;
 								     date = "You chose April " + num + "st!";
@@ -84,7 +97,7 @@ public class Main extends Application {
 								     stitle.setFont(Font.font(15));
 								     eventTypes.add(stitle, 3, 0);
 							     }			
-							     else if( intnum == 2 || intnum == 22)
+							     else if( intnum == 2 || intnum == 22)//for choosing days that end with "nd"
 							     {
 								     String date = num;
 								     date = "You chose April " + num + "nd!";
@@ -92,7 +105,7 @@ public class Main extends Application {
 								     stitle.setFont(Font.font(15));
 								     eventTypes.add(stitle, 3, 0);
 							     }
-							     else if( intnum == 3 || intnum == 23)
+							     else if( intnum == 3 || intnum == 23)//for choosing days that end with "rd"
 							     {
 								     String date = num;
 								     date = "You chose April " + num + "rd!";
@@ -100,8 +113,9 @@ public class Main extends Application {
 								     stitle.setFont(Font.font(15));
 								     eventTypes.add(stitle, 3, 0);
 							     }
-							     if (dateButton.getStyle().equals("-fx-background-color: green;"))
+							     if (dateButton.getStyle().equals("-fx-background-color: green;")) //to show that a day has already had an event assigned to it, it turns green 
 							     {				
+								     //setting up a scene to display when the user clicks on an occupied date, and give them a button to return to the calendar
 								     Button backButton = new Button("Go Back?");
 								     backButton.setPrefWidth(100);
 								     backButton.setPrefHeight(50);
@@ -130,7 +144,7 @@ public class Main extends Application {
 							    });
 				buttonList.add(dateButton);
 			}
-			
+			//adding vboxes for all of the button days
 			for(int i = 0; i < 40; i++)
 			{
 				VBox vbox = new VBox(buttonList.get(i));
@@ -140,7 +154,8 @@ public class Main extends Application {
 			GridPane calendar = new GridPane();
 			
 			int count = 0;
-			
+			//counts up for all of the days in the month, this is part of the reason we stuck to using one month, as it would be out of the scope of the project 
+			//to attempt to adapt to the different number of days in a month, or the extra day in a leap year
 			for(int i = 0; i < 5; i++)
 			{
 				
@@ -160,7 +175,7 @@ public class Main extends Application {
 					}
 				}
 			}
-			
+			//sets the title, only works for one month. would need to change if we ever revisited this project
 			Text title = new Text("April");
 			title.setFont(Font.font(32));
 			
@@ -177,7 +192,7 @@ public class Main extends Application {
 			Text saturday = new Text("Sat");
 			
 			GridPane gridpaneDays = new GridPane();
-			
+			//setting the positions for each day of the week
 			gridpaneDays.add(sunday, 0, 1);
 			gridpaneDays.add(monday, 1, 1);
 			gridpaneDays.add(tuesday, 2, 1);
@@ -185,7 +200,8 @@ public class Main extends Application {
 			gridpaneDays.add(thursday, 4, 1);
 			gridpaneDays.add(friday, 5, 1);
 			gridpaneDays.add(saturday, 6, 1);
-			
+
+			//slight spacing between the days for style
 			gridpaneDays.setHgap(125);
 			gridpaneDays.setVgap(25);
 			gridpaneDays.setAlignment(Pos.CENTER);
@@ -216,6 +232,7 @@ public class Main extends Application {
 			
 			Button confirmButton = new Button("Do you wish to continue?");
 			
+			// textbox prompts for the user to input everything about their event
 			Text startText = new Text("Enter the starting time:");
 			Text endText = new Text("Enter the end time:");
 			Text groText = new Text("Enter the groups involved:");
@@ -250,9 +267,10 @@ public class Main extends Application {
 				primaryStage.setScene(calendarScene);
 											});
 			
-			
+			//this is to find what type of event the user wants to add
 			String[] eventTypeList = {"Event", "Game", "Scrimmage", "Stream"};
 			
+			//adding the 4 buttons for the different event types
 			for(int i = 0; i < 4; i++)
 				{
 				Button event = new Button(eventTypeList[i]);
@@ -277,14 +295,15 @@ public class Main extends Application {
 					
 					eventInfo.add(confirmButton, 2, 7);
 					
-					if (event.getText().equals("Game"))
+					//this is where we add specific things for each class of event
+					if (event.getText().equals("Game")) //if the event is a game, add the schoolname textbox
 					{
 						Text schoolNameText = new Text("Enter the name of the opposing school:");						
 						TextField schoolName = new TextField();
 						eventInfo.add(schoolNameText, 1, 6);
 						eventInfo.add(schoolName, 3, 6);
 					}
-					else if (event.getText().equals("Scrimmage"))
+					else if (event.getText().equals("Scrimmage")) // if the event is a scrim, add the opponentname textbox
 					{
 						Text opponentNameText = new Text("Enter the name of the scrimmage opponents:");						
 						TextField opponentName = new TextField();
@@ -293,12 +312,12 @@ public class Main extends Application {
 					}
 					else if (event.getText().equals("Stream"))
 					{
-						Text streamLinkText = new Text("Enter the stream link:");						
+						Text streamLinkText = new Text("Enter the stream link:"); //if the event is a stream, add the streamlink textbox					
 						TextField streamLink = new TextField();
 						eventInfo.add(streamLinkText, 1, 6);
 						eventInfo.add(streamLink, 3, 6);
 					}
-					primaryStage.setScene(eventInfoScene);
+					primaryStage.setScene(eventInfoScene); //default event type
 
 										});
 				}
